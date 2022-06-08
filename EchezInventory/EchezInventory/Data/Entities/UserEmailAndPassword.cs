@@ -38,6 +38,7 @@ namespace EchezInventory.Data.Entities
         [Required]
         public string Location { get; set; }
 
-
+        [Display(Name = "Usuario")]
+        public string FullName => $"{Name} {LastName}";
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EchezInventory.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220608032715_InitialDb")]
+    [Migration("20220608033415_InitialDb")]
     partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
