@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 
 <p>
-    <a asp-action="Create" class="btn btn-outline-primary">Crear Nuevo</a>
+    <a asp-action="Create" class="btn btn-outline-primary"><i class="fa-solid fa-circle-plus"></i> Nuevo Usuario</a>
 </p>
 <div class="row">
     <div class="col-md-12">
@@ -63,9 +63,9 @@
                                     @Html.DisplayFor(modelItem => item.Location)
                                 </td>
                                 <td>
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="fa-solid fa-pen"></i> </a>
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class="fa-solid fa-circle-info"></i></a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i> </a>
+                                    <!--<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class="fa-solid fa-circle-info"></i></a>-->
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-primary"><i class="fa-solid fa-trash-can"></i></a>
                                 </td>
                             </tr>
                         }

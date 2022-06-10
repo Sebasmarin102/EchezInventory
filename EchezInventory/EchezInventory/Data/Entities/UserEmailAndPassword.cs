@@ -29,7 +29,7 @@ namespace EchezInventory.Data.Entities
         [Display(Name = "Extensión")]
         public int? ExtensionNumber { get; set; }
 
-        [Display(Name = "Contraseña de Extensión")]
+        [Display(Name = "Contraseña de Ext.")]
         [MaxLength(70, ErrorMessage = "El campo {0} debe tener máximo {1} caractéres.")]
         public string? ExtensionPassword { get; set; }
 

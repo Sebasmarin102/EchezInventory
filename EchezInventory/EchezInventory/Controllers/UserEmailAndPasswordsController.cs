@@ -21,9 +21,7 @@ namespace EchezInventory.Controllers
 
         public async Task<IActionResult> Index()
         {
-              return _context.UserEmailAndPasswords != null ? 
-                          View(await _context.UserEmailAndPasswords.ToListAsync()) :
-                          Problem("Entity set 'DataContext.UserEmailAndPasswords'  is null.");
+            return View(await _context.UserEmailAndPasswords.ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id)
