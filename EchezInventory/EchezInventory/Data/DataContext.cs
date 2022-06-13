@@ -9,12 +9,14 @@ namespace EchezInventory.Data
         {
         }
 
+        public DbSet<CorporateEmail> CorporateEmails { get; set; }
         public DbSet<UserEmailAndPassword> UserEmailAndPasswords { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<UserEmailAndPassword>().HasIndex(u => u.Email).IsUnique();
+            modelBuilder.Entity<CorporateEmail>().HasIndex(u => u.Email).IsUnique();
         }
 
     }

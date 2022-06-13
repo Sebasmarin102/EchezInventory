@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
 </head>
 <body>
-    <header>
-        <!--<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">
+    <!--<header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Echez</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-chess"></i> Echez</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -29,18 +29,102 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="UserEmailAndPasswords" asp-action="Index"><i class="fa-solid fa-users"></i></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="CorporateEmails" asp-action="Index">Corporativo</a>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </nav>-->
+        </nav>    
+       
+    </header>-->
+
+    <header>
+
+    <div class = "sidebar">
+        <div class = "logo-details">
+            <i class="fa-solid fa-chess"></i>
+            <span class="logo_name">ECHEZ</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a asp-area="" asp-controller="CorporateEmails" asp-action="Index">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span class="link_name">Corporativo</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Web desing</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span class="link_name">Category</span>
+                </a>
+            </li>
+            <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="link_name">Cuentas</span>
+                    </a>
+                    <i class="fa-solid fa-angle-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Cuentas</a></li>
+                    <li><a asp-area="" asp-controller="UserEmailAndPasswords" asp-action="Index">Usuarios</a></li>
+                    <li><a asp-area="" asp-controller="CorporateEmails" asp-action="Index">Corporativos</a></li>
+                    <li><a href="#">Web desing</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class="fa-solid fa-border-all"></i>
+                        <span class="link_name">Servidores</span>
+                    </a>
+                    <i class="fa-solid fa-angle-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Web desing</a></li>
+                    <li><a href="#">Web desing 2</a></li>
+                    <li><a href="#">Web desing</a></li>
+                    <li><a href="#">Web desing</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span class="link_name">Analytics</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Analitycs</a></li>
+                </ul>
+            </li>
+        <li>
+            <div class="profile-details">
+                <div class="profile-content">
+                    <img src="images/01022012(005).jpg" alt="profile"/>
+                </div>
+            
+                <div class="name-job">
+                    <div class="profile_name">Sebastian</div>                
+                </div>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </div>
+        </li>
+      </ul>
+    </div>
+
+
+    <section class="home-section">
+        <div class="home-content">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </section>
+
+
     </header>
-
-
-
-
-
-
-
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -58,6 +142,25 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/font-awesome/js/fontawesome.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+    
+        let arrow = document.querySelectorAll(".arrow");        
+        for (var i = 0; i < arrow.length; i++){
+            arrow[i].addEventListener("click", (e)=>{
+                let arrowParent = e.target.parentElement.parentElement;                   
+                arrowParent.classList.toggle("showMenu");
+            });
+        }
+
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".fa-bars");
+        console.log(sidebarBtn); 
+        sidebarBtn.addEventListener("click", ()=>{
+            sidebar.classList.toggle("close");
+        });
+    </script>
+    
     
 </body>
 </html>

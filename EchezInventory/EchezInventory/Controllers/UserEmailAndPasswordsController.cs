@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using EchezInventory.Data;
+﻿using EchezInventory.Data;
 using EchezInventory.Data.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EchezInventory.Controllers
 {
@@ -31,7 +26,7 @@ namespace EchezInventory.Controllers
                 return NotFound();
             }
 
-            var userEmailAndPassword = await _context.UserEmailAndPasswords
+            UserEmailAndPassword userEmailAndPassword = await _context.UserEmailAndPasswords
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (userEmailAndPassword == null)
             {
@@ -48,7 +43,7 @@ namespace EchezInventory.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,LastName,Email,Password,ExtensionNumber,ExtensionPassword,Location")] UserEmailAndPassword userEmailAndPassword)
+        public async Task<IActionResult> Create(UserEmailAndPassword userEmailAndPassword)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +51,7 @@ namespace EchezInventory.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(userEmailAndPassword);
         }
 
@@ -76,7 +72,7 @@ namespace EchezInventory.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,LastName,Email,Password,ExtensionNumber,ExtensionPassword,Location")] UserEmailAndPassword userEmailAndPassword)
+        public async Task<IActionResult> Edit(int id, UserEmailAndPassword userEmailAndPassword)
         {
             if (id != userEmailAndPassword.Id)
             {
@@ -135,14 +131,14 @@ namespace EchezInventory.Controllers
             {
                 _context.UserEmailAndPasswords.Remove(userEmailAndPassword);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool UserEmailAndPasswordExists(int id)
         {
-          return (_context.UserEmailAndPasswords?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.UserEmailAndPasswords?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
